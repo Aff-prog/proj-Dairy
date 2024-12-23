@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dairy Delights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <!-- <i class="fas fa-leaf"></i> -->
+            <a href="index.html" class="site-title">Dairy Delights</a>
+        </h1>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <!-- <div class="nav-left">
+                    <li><a href="index.html" class="dashboard-nav-link">Home</a></li>
+                    <li><a href="products.html" class="dashboard-nav-link">All Products</a></li>
+                </div> -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">All Products</a></li>
+                <div class="nav-right">
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart </a></li>
+                    <li id="dashboardLink"><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li id="userSection">
+                        <span id="userName"></span>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="dashboard">
+        <div class="welcome-section">
+            <h1>Welcome, <span id="welcomeUserName"></span>!</h1>
+        </div>
+        <div class="dashboard-content">
+            <div class="dashboard-card">
+                <h2>Your Account Details</h2>
+                <div id="userDetails"></div>
+            </div>
+            <!-- Add more dashboard cards as needed -->
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script>
+        // Display user details in dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update welcome message with full name
+            const welcomeUserName = document.getElementById('welcomeUserName');
+            if (welcomeUserName) {
+                welcomeUserName.textContent = user.name;
+            }
+
+            // Update navigation username
+            const userName = document.getElementById('userName');
+            if (userName) {
+                userName.textContent = user.name;
+                userName.style.display = 'inline-block';
+            }
+            
+            // Update user details section
+            const userDetails = document.getElementById('userDetails');
+            if (userDetails) {
+                userDetails.innerHTML = `
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

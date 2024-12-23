@@ -1,0 +1,141 @@
+/* Base mobile styles */
+@media screen and (max-width: 768px) {
+    /* Improved header layout */
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    /* Better hamburger menu */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        padding: 0.5rem;
+        margin: -0.5rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* Enhanced mobile navigation */
+    #main-nav {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: var(--primary-color);
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    #main-nav.active {
+        left: 0;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-buttons li {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-buttons li a {
+        display: block;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    /* Improved product grid for mobile */
+    .product-scroll {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.8rem;
+        padding: 0.8rem;
+    }
+
+    /* Better contact section layout */
+    .contact-section {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    /* Optimize form elements for touch */
+    input, 
+    textarea, 
+    select, 
+    button {
+        min-height: 44px;
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+
+    /* Improved spacing for mobile */
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        margin: 1.5rem 0;
+    }
+}
+
+/* Tablet optimization */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+}
+
+/* Landscape mode optimization */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    #main-nav {
+        height: 100vh;
+        padding-bottom: 4rem;
+    }
+
+    .nav-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .nav-buttons li {
+        border: none;
+    }
+}
+
+/* Large screen optimization */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Print optimization */
+@media print {
+    .menu-toggle,
+    .nav-buttons,
+    .btn {
+        display: none !important;
+    }
+} 
